@@ -1,0 +1,22 @@
+{
+    "cSpell.words": [
+        "anidb",
+        "anilist",
+        "animeplanet",
+        "anisearch",
+        "anitaku",
+        "axios",
+        "Deca",
+        "heroicons",
+        "kitsu",
+        "lexend",
+        "livechart",
+        "luxon",
+        "myanimelist",
+        "nuxt",
+        "nuxtjs",
+        "pinia",
+        "tailwindcss"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
+}
