@@ -4,7 +4,7 @@
         <div class="-z-10 h-60 w-full overflow-hidden">
             <img
                 class="-mt-[50%] w-full align-middle opacity-30 blur-xl"
-                :src="`http://animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
+                :src="`https://api.animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
                 :alt="animeInfoData.title_english"
             />
         </div>
@@ -12,7 +12,7 @@
         <div class="mx-2 flex flex-col text-white">
             <img
                 class="-mt-40 w-40 rounded border border-solid border-gray-400"
-                :src="`http://animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
+                :src="`https://api.animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
                 :alt="animeInfoData.title_english"
             />
             <!-- TODO Add play button -->
@@ -120,8 +120,8 @@ type Tabs = 'Synopsis' | 'Related' | 'Similar' | 'OP/ED' | 'Trailer';
 const tab = ref<Tabs>('Synopsis');
 
 const route = useRoute();
-const { data } = await useFetch(`http://animixplay-reborn.xyz/api/v1/anime/info/${route.params.animeid}`);
+const { data } = await useFetch(`https://api.animixplay-reborn.xyz/api/v1/anime/info/${route.params.animeid}`);
 const animeInfoData = data.value as any;
 
-// http://animixplay-reborn.xyz/api/v1/anime/info/54869
+// https://api.animixplay-reborn.xyz/api/v1/anime/info/54869
 </script>
