@@ -1,5 +1,5 @@
 <template>
-    <div class="font-lexend select-none">
+    <div class="select-none font-lexend">
         <AppHeader />
 
         <ScheduleMenu />

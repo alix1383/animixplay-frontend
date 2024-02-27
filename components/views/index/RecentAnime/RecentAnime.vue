@@ -4,7 +4,7 @@
             v-for="anime in animeData"
             class="max-w-44 basis-1/2 cursor-pointer border-2 border-solid border-[#222222] bg-[#2c2c2c] p-1 transition-all hover:brightness-50 md:basis-1/4 lg:basis-1/6"
         >
-            <NuxtLink :to="`/anime/${anime.myAnimeList.id}/watch/${anime.ep}`">
+            <NuxtLink :to="`/anime/${anime.myAnimeList.id}/watch${anime.watchUrl}`">
                 <div class="relative max-w-44">
                     <img class="h-60 w-full" :src="`${runtimeConfig.public.srcBase}/img/gogo/${anime.imageFileName}`" />
                     <div

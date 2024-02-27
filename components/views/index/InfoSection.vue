@@ -14,7 +14,7 @@
 
             We gather information from sites like
             <span class="font-bold text-yellow-300"> LiveChart</span>,
-            <span class="font-bold text-yellow-300"> MYAnimeList </span>and
+            <span class="font-bold text-yellow-300"> MyAnimeList </span>and
             <span class="font-bold text-yellow-300"> anitaku (gogo anime)</span>
             to provide you with the latest updates on your favorite anime series.
             <br />
