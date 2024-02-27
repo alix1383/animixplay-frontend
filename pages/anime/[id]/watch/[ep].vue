@@ -76,10 +76,10 @@
 
 <script lang="ts" setup>
 const route = useRoute();
-const { data: srcData } = await useFetch(`http://localhost:8000/api/v1/watch/${route.params.ep}`);
+const { data: srcData } = await useFetch(`http://animixplay-reborn.xyz/api/v1/watch/${route.params.ep}`);
 const srcLink = srcData.value as string;
 
 // TODO
-const { data: MALData } = await useFetch(`http://localhost:8000/api/v1/anime/info/${route.params.id}`);
+const { data: MALData } = await useFetch(`http://animixplay-reborn.xyz/api/v1/anime/info/${route.params.id}`);
 const myAnimeListData = MALData.value as any;
 </script>

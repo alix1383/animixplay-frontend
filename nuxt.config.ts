@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         devtools: { enabled: true },
     },
     runtimeConfig: {
-        public: { apiBase: 'http://localhost:8000/api', srcBase: 'http://localhost:8000/storage' },
+        public: { apiBase: 'https://animixplay-reborn.xyz/api', srcBase: 'https://animixplay-reborn.xyz/storage' },
     },
 
     googleFonts: {
