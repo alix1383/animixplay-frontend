@@ -51,7 +51,7 @@ const runtimeConfig = useRuntimeConfig();
 
 const instance = getCurrentInstance();
 
-const getDataFromApi = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/schedule');
+const getDataFromApi = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/schedule?${Math.round(new Date().getTime()/1000)}');
 const airingTime = reOrderWeekDays(getDataFromApi.data);
 
 function reOrderWeekDays(data: AnimeDetailsType[]) {

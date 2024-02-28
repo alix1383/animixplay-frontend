@@ -80,7 +80,7 @@ const imgUri: String = `${runtimeConfig.public.srcBase}/img/liveChart/`;
 import { ref } from 'vue';
 import axios from 'axios';
 
-const apiData = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/top');
+const apiData = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/top?${Math.round(new Date().getTime()/1000)}');
 const topAnimeData: TopAnimeData[] = apiData.data;
 console.log(topAnimeData);
 

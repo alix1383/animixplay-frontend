@@ -32,7 +32,7 @@
 import axios from 'axios';
 const runtimeConfig = useRuntimeConfig();
 
-const apiReq = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/recent');
+const apiReq = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/recent?${Math.round(new Date().getTime()/1000)}');
 
 type RecentAnime = {
     [key: number]: {
