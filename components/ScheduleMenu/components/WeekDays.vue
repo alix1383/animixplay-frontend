@@ -46,13 +46,15 @@ type weekdayLong = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 
 
 import { getCurrentInstance } from 'vue';
 import { DateTime } from 'luxon';
-import axios from 'axios';
-const runtimeConfig = useRuntimeConfig();
 
 const instance = getCurrentInstance();
 
-const getDataFromApi = await axios.get(runtimeConfig.public.apiBase + `/v1/anime/schedule?${Math.round(new Date().getTime()/1000)}`);
-const airingTime = reOrderWeekDays(getDataFromApi.data);
+// const getDataFromApi = await axios.get(
+//     runtimeConfig.public.apiBase + `/v1/anime/schedule?${Math.round(new Date().getTime() / 1000)}`,
+// );
+
+const scheduleMenuStore = useScheduleMenuStore();
+const airingTime = reOrderWeekDays(scheduleMenuStore.data);
 
 function reOrderWeekDays(data: AnimeDetailsType[]) {
     const animeData: { [day: string]: AnimeDetailsType[] } = {};
@@ -89,7 +91,7 @@ function isValidJson(value: string | null): value is string {
     return value !== null && typeof value === 'string';
 }
 
-function markCheck(id: number): boolean {
+function markCheck(id: number): boolean | void {
     const LocalDB = localStorage.getItem('anime_mark');
 
     if (!isValidJson(LocalDB)) {

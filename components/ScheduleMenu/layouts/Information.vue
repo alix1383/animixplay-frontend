@@ -2,7 +2,7 @@
     <div>
         <div class="mb-3 flex items-center justify-between px-5">
             <!-- improve icon style -->
-            <Icon name="heroicons:arrow-left" @click="menuStatus.scheduleMenuStatus = 'CLOSE'" />
+            <Icon name="heroicons:arrow-left" @click="scheduleMenuStore.scheduleMenuStatus = 'CLOSE'" />
 
             <div class="pl-6 text-3xl">{{ time }}</div>
             <div class="flex flex-col items-end">
@@ -17,22 +17,27 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { DateTime } from 'luxon';
-import { useMenuStore } from '@/stores/menu';
+import { useScheduleMenuStore } from '@/stores/ScheduleMenu';
 
-const menuStatus = useMenuStore();
+const scheduleMenuStore = useScheduleMenuStore();
 const time = ref('00:00:00');
 
 // [nuxt] `setInterval` should not be used on the server.
+onMounted(() => {
+    setInterval(function () {
+        let times = [
+            DateTime.now().hour.toString(),
+            DateTime.now().minute.toString(),
+            DateTime.now().second.toString(),
+        ];
 
-setInterval(function () {
-    let times = [DateTime.now().hour.toString(), DateTime.now().minute.toString(), DateTime.now().second.toString()];
+        times.forEach((element, index) => {
+            if (element.length === 1) {
+                times[index] = `0${element}`;
+            }
+        });
 
-    times.forEach((element, index) => {
-        if (element.length === 1) {
-            times[index] = `0${element}`;
-        }
-    });
-
-    time.value = times.join(':');
-}, 500);
+        time.value = times.join(':');
+    }, 500);
+});
 </script>

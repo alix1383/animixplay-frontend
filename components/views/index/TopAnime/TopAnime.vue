@@ -56,41 +56,24 @@
 </template>
 
 <script setup lang="ts">
-type TopAnimeData = {
-    name: string;
-    ids: {
-        anilist: number | null;
-        myanimelist: number;
-        anidb: number | null;
-        animeplanet: string | null;
-        anisearch: number | null;
-        kitsu: number | null;
-        livechart: number;
-    };
-    imageFileName: string;
-    animeSummary: {
-        tags: Array<string>;
-        markdown: string;
-    };
-};
-const runtimeConfig = useRuntimeConfig();
-
-const imgUri: String = `${runtimeConfig.public.srcBase}/img/liveChart/`;
-
 import { ref } from 'vue';
-import axios from 'axios';
 
-const apiData = await axios.get(runtimeConfig.public.apiBase + `/v1/anime/top?${Math.round(new Date().getTime()/1000)}`);
-const topAnimeData: TopAnimeData[] = apiData.data;
-console.log(topAnimeData);
+const runtimeConfig = useRuntimeConfig();
+const topAnimeStore = useTopAnimeStore();
+
+const imgUri: String = `${runtimeConfig.public.StorageBase}/img/liveChart/`;
+
+const topAnimeData = topAnimeStore.data;
 
 const showItem = ref(1);
+
+onMounted(() => {
+    setInterval(next, 15 * 1000);
+});
 
 function mergeTags(tags: Array<string>): string {
     return tags.join(', ');
 }
-
-setInterval(next, 15 * 1000);
 
 function next(): void {
     if (showItem.value > 9) {

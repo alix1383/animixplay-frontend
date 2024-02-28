@@ -1,13 +1,13 @@
 <template>
-    <div class="my-5 flex items-center justify-center rounded-2xl bg-red-900 text-white">
-        for Edge Users you can use
+    <div class="my-5 rounded-2xl bg-red-900 text-white">
+        i recommend to use
         <NuxtLink
-            class="mx-1 font-bold underline"
-            to="https://microsoftedge.microsoft.com/addons/detail/adblock-%E2%80%94-best-ad-blocker/ndcileolkflehcjpmjnfbnaibdcgglog?refid=bingshortanswersdownload"
+            class="font-bold underline transition-colors hover:text-blue-300"
+            to="https://vivaldi.com"
+            target="_blank"
             external
+            >Vivaldi browser</NuxtLink
         >
-            AdBlock
-        </NuxtLink>
         to block player ads
     </div>
 
@@ -76,10 +76,12 @@
 
 <script lang="ts" setup>
 const route = useRoute();
-const { data: srcData } = await useFetch(`https://api.animixplay-reborn.xyz/api/v1/watch/${route.params.ep}`);
+const runtimeConfig = useRuntimeConfig();
+
+const { data: srcData } = await useFetch(`${runtimeConfig.public.apiBase}/v1/watch/${route.params.ep}`);
 const srcLink = srcData.value as string;
 
 // TODO
-const { data: MALData } = await useFetch(`https://api.animixplay-reborn.xyz/api/v1/anime/info/${route.params.id}`);
+const { data: MALData } = await useFetch(`${runtimeConfig.public.apiBase}/v1/anime/info/${route.params.id}`);
 const myAnimeListData = MALData.value as any;
 </script>

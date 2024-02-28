@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: false,
+    ssr: true,
     typescript: {
         shim: false,
         strict: true,
@@ -8,9 +8,21 @@ export default defineNuxtConfig({
     },
     $development: {
         devtools: { enabled: true },
+        runtimeConfig: {
+            public: {
+                apiBase: 'https://api.animixplay-reborn.xyz/api',
+                StorageBase: 'https://api.animixplay-reborn.xyz/storage',
+            },
+        },
     },
-    runtimeConfig: {
-        public: { apiBase: 'https://api.animixplay-reborn.xyz/api', srcBase: 'https://api.animixplay-reborn.xyz/storage' },
+
+    $production: {
+        runtimeConfig: {
+            public: {
+                apiBase: 'https://api.animixplay-reborn.xyz/api',
+                StorageBase: 'https://api.animixplay-reborn.xyz/storage',
+            },
+        },
     },
 
     googleFonts: {
@@ -18,10 +30,6 @@ export default defineNuxtConfig({
             'Lexend Deca': [400, 500, 700],
         },
     },
-
-    // tailwindcss: {
-    //     cssPath: 'assets/css/tailwind.css',
-    // },
 
     appConfig: {
         nuxtIcon: {

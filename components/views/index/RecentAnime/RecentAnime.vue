@@ -6,7 +6,10 @@
         >
             <NuxtLink :to="`/anime/${anime.myAnimeList.id}/watch${anime.watchUrl}`">
                 <div class="relative max-w-44">
-                    <img class="h-60 w-full" :src="`${runtimeConfig.public.srcBase}/img/gogo/${anime.imageFileName}`" />
+                    <img
+                        class="h-60 w-full"
+                        :src="`${runtimeConfig.public.StorageBase}/img/gogo/${anime.imageFileName}`"
+                    />
                     <div
                         class="absolute top-0 inline-flex items-center rounded-br-lg px-2 backdrop-blur-lg backdrop-brightness-50"
                     >
@@ -29,26 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
 const runtimeConfig = useRuntimeConfig();
+const recentAnimeStore = useRecentAnimeStore();
 
-const apiReq = await axios.get(runtimeConfig.public.apiBase + '/v1/anime/recent?${Math.round(new Date().getTime()/1000)}');
-
-type RecentAnime = {
-    [key: number]: {
-        name: string;
-        imageFileName: string;
-        watchUrl: string;
-        ep: number;
-        myAnimeList: {
-            title: string;
-            id: number;
-            eps: number | null;
-            score: number;
-            type: string;
-        };
-    };
-};
-
-const animeData: RecentAnime = apiReq.data;
+const animeData = recentAnimeStore.data;
 </script>

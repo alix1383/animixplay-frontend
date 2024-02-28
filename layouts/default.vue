@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-const menuStatus = useMenuStore();
+const scheduleMenuStore = useScheduleMenuStore();
 function swipeHandlerRight() {
-    menuStatus.scheduleMenuStatus = 'OPEN';
+    scheduleMenuStore.scheduleMenuStatus = 'OPEN';
 }
 </script>

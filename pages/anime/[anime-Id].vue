@@ -4,16 +4,18 @@
         <div class="-z-10 h-60 w-full overflow-hidden">
             <img
                 class="-mt-[50%] w-full align-middle opacity-30 blur-xl"
-                :src="`https://api.animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
+                :src="`${runtimeConfig.public.StorageBase}/img/mal/${animeInfoData.mal_id}.webp`"
                 :alt="animeInfoData.title_english"
+                decoding="sync"
             />
         </div>
         <!-- Left Side Section -->
         <div class="mx-2 flex flex-col text-white">
             <img
                 class="-mt-40 w-40 rounded border border-solid border-gray-400"
-                :src="`https://api.animixplay-reborn.xyz/storage/img/mal/${animeInfoData.mal_id}.webp`"
+                :src="`${runtimeConfig.public.StorageBase}/img/mal/${animeInfoData.mal_id}.webp`"
                 :alt="animeInfoData.title_english"
+                decoding="sync"
             />
             <!-- TODO Add play button -->
             <!-- <div
@@ -118,9 +120,10 @@
 <script lang="ts" setup>
 type Tabs = 'Synopsis' | 'Related' | 'Similar' | 'OP/ED' | 'Trailer';
 const tab = ref<Tabs>('Synopsis');
+const runtimeConfig = useRuntimeConfig();
 
 const route = useRoute();
-const { data } = await useFetch(`https://api.animixplay-reborn.xyz/api/v1/anime/info/${route.params.animeid}`);
+const { data } = await useFetch(`${runtimeConfig.public.apiBase}/v1/anime/info/${route.params.animeId}`);
 const animeInfoData = data.value as any;
 
 // https://api.animixplay-reborn.xyz/api/v1/anime/info/54869
